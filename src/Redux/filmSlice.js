@@ -1,21 +1,29 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { apikey, filmsAPI } from '../constants';
 
-export const fetchFilms = createAsyncThunk('films/fetchFilms', () => {
-  return axios.get('http://www.omdbapi.com/?apikey=7bf50757&s=thor').then((response) => response.data)
+export const fetchFilms = createAsyncThunk('films/fetchFilms', (searchTerm) => {
+  return axios.get(`${filmsAPI}/?apiKey=${apikey}&${searchTerm}`).then((response) => response.data)
 })
+
+export const getTodoAsync = (keyTerm) => async (dispatch) => {
+  const response = await axios.get(`${filmsAPI}/?apiKey=${apikey}&${keyTerm}`).then((response) => response.data);
+  dispatch(fetchFilmsByPage(response));
+
+};
 
 const initialState = {
   loading: false,
-  films: {}
+  films: {},
+  page: 1
 };
 
 export const filmSlice = createSlice({
   name: 'film',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    fetchFilmsByPage: (state, data) => {
+      state.films = data.payload;
     },
   },
   extraReducers: (builder) => {
@@ -30,6 +38,6 @@ export const filmSlice = createSlice({
   }
 });
 
-export const { increment } = filmSlice.actions;
+export const { fetchFilmsByPage } = filmSlice.actions;
 
 export default filmSlice.reducer;
