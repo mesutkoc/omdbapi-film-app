@@ -22,4 +22,9 @@ const getSearchTerm = (userInputs) => {
     return `s=${userInputs?.searchTerm}`
 }
 
-export { getPageCount, getSearchTerm }
+const getRating = (rating) => {
+    const ratingString = rating?.map(rate => `*${rate?.Source}: ${rate?.Value} `)
+    return ratingString;
+}
+
+export { getPageCount, getSearchTerm, getRating }

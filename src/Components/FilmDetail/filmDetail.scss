@@ -1,0 +1,62 @@
+.detailPageRoot {
+    display: flex;
+    margin-top: 20px;
+    margin: 40px 50px;
+    font-size: 14px;
+
+    .image {
+        border: 2px solid #00205B;
+        margin-right: 10px;
+    }
+
+    table {
+        display: grid;
+        border-collapse: collapse;
+        min-width: 100%;
+        grid-template-columns: auto auto;
+
+        th,
+        td {
+            padding: 5px 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: wrap;
+        }
+
+        th {
+            position: sticky;
+            top: 0;
+            background: #00205B;
+            text-align: left;
+            font-weight: normal;
+            font-size: 14px;
+            color: white;
+        }
+
+        th:last-child {
+            border: 0;
+        }
+
+        td {
+            color: #808080;
+        }
+
+        tr:nth-child(even) td {
+            background: rgba(0, 32, 90, 0.1);
+        }
+
+        tr:nth-child(odd) th {
+            background: rgba(0, 32, 90, 0.1);
+            color: #00205B
+        }
+    }
+
+    thead,
+    tbody,
+    tr {
+        display: contents;
+    }
+
+
+
+}

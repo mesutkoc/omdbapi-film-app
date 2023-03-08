@@ -6,6 +6,39 @@
         border-collapse: collapse;
         min-width: 100%;
         grid-template-columns: 100px minmax(300px, auto) 200px 200px 200px;
+
+        th,
+        td {
+            padding: 15px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        th {
+            position: sticky;
+            top: 0;
+            background: #00205B;
+            text-align: left;
+            font-weight: normal;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        th:last-child {
+            border: 0;
+        }
+
+        td {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            color: #808080;
+        }
+
+        tr:nth-child(even) td {
+            background: rgba(0, 32, 90, 0.1);
+        }
+
     }
 
     thead,
@@ -14,37 +47,6 @@
         display: contents;
     }
 
-    th,
-    td {
-        padding: 15px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    th {
-        position: sticky;
-        top: 0;
-        background: #00205B;
-        text-align: left;
-        font-weight: normal;
-        font-size: 1.1rem;
-        color: white;
-    }
-
-    th:last-child {
-        border: 0;
-    }
-
-    td {
-        padding-top: 10px;
-        padding-bottom: 10px;
-        color: #808080;
-    }
-
-    tr:nth-child(even) td {
-        background: rgba(0, 32, 90, 0.1);
-    }
 
     .filterForm {
         display: flex;
