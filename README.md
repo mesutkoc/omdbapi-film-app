@@ -1,3 +1,3 @@
 # omdbapi-film-api
 
-React Api
+React App
