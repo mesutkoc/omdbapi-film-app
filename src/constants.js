@@ -1,5 +1,8 @@
-const filmsAPI = 'http://www.omdbapi.com/';
-const apikey = '7bf50757';
-const initialSearchTerm = 'fast and furious'
+const FILMS_API = 'http://www.omdbapi.com/';
+const API_KEY = '7bf50757';
+const INITIAL_SEARCH_TERM = 'fast and furious'
 const FILM_COUNT_FOR_PER_PAGE = 10;
-export { filmsAPI, apikey, initialSearchTerm, FILM_COUNT_FOR_PER_PAGE }
+
+
+
+export { FILMS_API, API_KEY, INITIAL_SEARCH_TERM, FILM_COUNT_FOR_PER_PAGE }

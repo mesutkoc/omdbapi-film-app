@@ -1,20 +1,48 @@
 import React, { useMemo } from "react";
+import { useDispatch } from 'react-redux';
+import { fetchFilms } from '../../Redux/filmSlice';
+import { useForm } from "react-hook-form";
 import { useSelector } from 'react-redux';
 import { getPageCount } from "../../helper";
+import { INITIAL_SEARCH_TERM } from "../../constants";
 import Paginator from "./Paginator";
 
 import './table.scss';
 
 function TableDashboard() {
+    const dispatch = useDispatch();
     const data = useSelector((state) => state.films);
     const totalResults = data?.films?.totalResults;
 
+    const { register, handleSubmit, getValues } = useForm({
+        defaultValues: {
+            searchTerm: INITIAL_SEARCH_TERM,
+            checkbox: false
+        }
+    });
+    console.log(getValues());
     const pageCount = useMemo(
         () => getPageCount(totalResults),
         [totalResults]
     );
 
+    const onSubmit = () => {
+        dispatch(fetchFilms(`s=${getValues('searchTerm')}`))
+    };
+
     return (<div className="tableDashboard">
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <input
+                {...register("searchTerm", { required: true })}
+                placeholder="Jot something down"
+            />
+
+            <input {...register("checkbox")} type="radio" value='Films' /><label>Films</label>
+            <input {...register("checkbox")} type="radio" value='Series' /><label>Series</label>
+            <input {...register("checkbox")} type="radio" value='Episodes' /><label>Episodes</label>
+
+            <input type="submit" value="Search" />
+        </form>
         <table>
             <thead>
                 <tr>
@@ -40,7 +68,7 @@ function TableDashboard() {
         </table>
         <div className="resultFooter">
             {data?.films?.totalResults} films found.
-            {totalResults > 10 && <Paginator pageCount={pageCount} />}
+            {totalResults > 10 && <Paginator pageCount={pageCount} searchTerm={getValues('searchTerm')} />}
         </div>
 
     </div>);

@@ -3,10 +3,10 @@ import { useDispatch } from 'react-redux';
 import { getTodoAsync } from "../../Redux/filmSlice";
 import './table.scss';
 
-function Paginator({ pageCount }) {
+function Paginator({ pageCount, searchTerm }) {
     const dispatch = useDispatch();
     const onHandle = (count) => {
-        dispatch(getTodoAsync(`s=fast and furious&page=${count}`));
+        dispatch(getTodoAsync(`s=${searchTerm}&page=${count}`));
     }
 
     return (

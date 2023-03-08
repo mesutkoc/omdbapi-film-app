@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { apikey, filmsAPI } from '../constants';
+import { API_KEY, FILMS_API } from '../constants';
 
 export const fetchFilms = createAsyncThunk('films/fetchFilms', (searchTerm) => {
-  return axios.get(`${filmsAPI}/?apiKey=${apikey}&${searchTerm}`).then((response) => response.data)
+  return axios.get(`${FILMS_API}/?apiKey=${API_KEY}&${searchTerm}`).then((response) => response.data);
 })
 
 export const getTodoAsync = (keyTerm) => async (dispatch) => {
-  const response = await axios.get(`${filmsAPI}/?apiKey=${apikey}&${keyTerm}`).then((response) => response.data);
+  const response = await axios.get(`${FILMS_API}/?apiKey=${API_KEY}&${keyTerm}`).then((response) => response.data);
   dispatch(fetchFilmsByPage(response));
 
 };
