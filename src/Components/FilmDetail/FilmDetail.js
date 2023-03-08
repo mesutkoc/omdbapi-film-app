@@ -18,7 +18,7 @@ function FilmDetail() {
 
   return (
     <div className="detailPageRoot">
-      <div className="detailImage"><img className="image" src={data?.Poster} alt="moviePoster"></img></div>
+      {data?.Poster && < div className="detailImage"><img className="image" src={data?.Poster} alt="moviePoster"></img></div>}
       <div className="movieDetailInfo">
         <div>
           <table>
@@ -34,7 +34,7 @@ function FilmDetail() {
         </div>
 
       </div>
-    </div>
+    </div >
   );
 }
 

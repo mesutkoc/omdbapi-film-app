@@ -1,5 +1,5 @@
 .tableDashboard {
-    margin-top: 60px;
+    margin-top: 10px;
 
     table {
         display: grid;
@@ -39,6 +39,12 @@
             background: rgba(0, 32, 90, 0.1);
         }
 
+        .noResult {
+            display: flex;
+            justify-content: center;
+            width: 1000px;
+            font-size: 40px;
+        }
     }
 
     thead,

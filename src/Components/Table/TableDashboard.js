@@ -29,7 +29,7 @@ function TableDashboard() {
                     </tr>
                 </thead>
                 <tbody>
-                    {data?.films?.Search?.map((film, index) =>
+                    {totalResults > 0 ? data?.films?.Search?.map((film, index) =>
                         <tr key={film?.imdbID}>
                             <td>{index + 1}</td>
                             <td><Link className="detailpageLink" to={`/filmdetail/i=${film?.imdbID}`}>{film?.Title}</Link></td>
@@ -37,7 +37,7 @@ function TableDashboard() {
                             <td>{film?.Year}</td>
                             <td>{film?.imdbID}</td>
                         </tr>
-                    )}
+                    ) : <tr className="noResult"><td>No search result </td></tr>}
                 </tbody>
             </table>
         </div>

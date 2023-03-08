@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getFilms } from '../../Redux/filmSlice';
 import { useForm } from "react-hook-form";
 import { setFilter } from "../../Redux/filmSlice";
-import { INITIAL_SEARCH_TERM } from "../../constants";
 
 function FilterForm() {
     const dispatch = useDispatch();
     const [value, setValue] = useState();
+    const { searchTerm } = useSelector((state) => state.films);
 
     const { register, handleSubmit, getValues } = useForm({
         defaultValues: {
-            searchTerm: INITIAL_SEARCH_TERM,
+            searchTerm: searchTerm,
             filter: false,
             year: ''
         }

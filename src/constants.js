@@ -1,4 +1,4 @@
-const FILMS_API = 'http://www.omdbapi.com/';
+const FILMS_API = 'https://www.omdbapi.com/';
 const API_KEY = '7bf50757';
 const INITIAL_SEARCH_TERM = 'Fast And Furious'
 const FILM_COUNT_FOR_PER_PAGE = 10;
