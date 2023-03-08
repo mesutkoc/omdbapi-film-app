@@ -1,17 +1,19 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getFilms } from "../../Redux/filmSlice";
 import './table.scss';
 
-function Paginator({ pageCount, searchTerm }) {
+function Paginator({ pageCount }) {
     const dispatch = useDispatch();
-    const onHandle = (count) => {
-        dispatch(getFilms(`s=${searchTerm}&page=${count}`));
+    const userInputs = useSelector((state) => state?.films);
+
+    const onHandle = (page) => {
+        dispatch(getFilms({ page: page, ...userInputs }));
     }
 
     return (
         <div className="paginator">
-            {pageCount?.map(count => <span className="paginatorItem" key={count} onClick={() => onHandle(count)}>{count}</span>)}
+            {pageCount?.map(page => <span className="paginatorItem" key={page} onClick={() => onHandle(page)}>{page}</span>)}
         </div>);
 }
 

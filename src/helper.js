@@ -9,4 +9,17 @@ const getPageCount = (totalResults) => {
     return pageNumber;
 }
 
-export { getPageCount }
+const getSearchTerm = (userInputs) => {
+    if (userInputs?.filter && !userInputs?.page) {
+        return `s=${userInputs?.searchTerm}&type=${userInputs?.filter}`;
+    }
+    if (userInputs?.page && userInputs?.filter) {
+        return `s=${userInputs?.searchTerm}&type=${userInputs?.filter}&page=${userInputs?.page}`;
+    }
+    if (!userInputs?.filter) {
+        return `s=${userInputs?.searchTerm}&page=${userInputs?.page}`
+    }
+    return `s=${userInputs?.searchTerm}`
+}
+
+export { getPageCount, getSearchTerm }

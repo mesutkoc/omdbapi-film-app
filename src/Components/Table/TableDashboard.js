@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
 import { useDispatch } from 'react-redux';
-import { fetchFilms } from '../../Redux/filmSlice';
+import { getFilms } from '../../Redux/filmSlice';
 import { useForm } from "react-hook-form";
 import { useSelector } from 'react-redux';
 import { getPageCount } from "../../helper";
+import { setFilter } from "../../Redux/filmSlice";
 import { INITIAL_SEARCH_TERM } from "../../constants";
 import Paginator from "./Paginator";
 
@@ -18,7 +19,8 @@ function TableDashboard() {
     const { register, handleSubmit, getValues } = useForm({
         defaultValues: {
             searchTerm: INITIAL_SEARCH_TERM,
-            checkbox: false
+            filter: false,
+            year: ''
         }
     });
 
@@ -28,7 +30,10 @@ function TableDashboard() {
     );
 
     const onSubmit = () => {
-        dispatch(fetchFilms(`s=${getValues('searchTerm')}`))
+        const userInputs = getValues();
+
+        dispatch(setFilter(userInputs));
+        dispatch(getFilms(userInputs))
     };
 
     return (<div className="tableDashboard">
@@ -38,9 +43,9 @@ function TableDashboard() {
                 placeholder="Jot something down"
             />
 
-            <input {...register("checkbox")} type="radio" value='Films' /><label>Films</label>
-            <input {...register("checkbox")} type="radio" value='Series' /><label>Series</label>
-            <input {...register("checkbox")} type="radio" value='Episodes' /><label>Episodes</label>
+            <input {...register("filter")} type="radio" value='movie' /><label>Movies</label>
+            <input {...register("filter")} type="radio" value='series' /><label>Series</label>
+            <input {...register("filter")} type="radio" value='episode' /><label>Episodes</label>
 
             <input type="submit" value="Search" />
         </form>
