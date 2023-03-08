@@ -21,15 +21,16 @@ function FilterForm() {
         dispatch(getFilms(userInputs))
     };
 
-    return (<div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+    return (<div className="filterForm">
+        <form onSubmit={handleSubmit(onSubmit)} className="form">
             <input
+                className="searchInput"
                 {...register("searchTerm", { required: true })}
                 placeholder="Jot something down" />
             <label><input {...register("filter")} type="radio" value='movie' />Movies</label>
             <label><input {...register("filter")} type="radio" value='series' />Series</label>
             <label><input {...register("filter")} type="radio" value='episode' />Episodes</label>
-            <input type="submit" value="Search" />
+            <label><input type="submit" value="Search" /></label>
         </form>
     </div>);
 }

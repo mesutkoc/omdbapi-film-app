@@ -46,6 +46,51 @@
         background: rgba(0, 32, 90, 0.1);
     }
 
+    .filterForm {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+
+        .searchInput {
+            width: 200px;
+            height: 30px;
+            font-size: 16px;
+            padding-left: 10px;
+        }
+
+        .form {
+            margin-left: 110px;
+
+            label {
+                margin-left: 10px;
+                font-size: 16px;
+                width: 100px;
+                cursor: pointer;
+
+                input:not(:last-child) {
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+
+            input[type=submit] {
+                width: 120px;
+                height: 30px;
+                background-color: #0275d8;
+                border: none;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                border: 3px solid #0275d8;
+
+                &:hover {
+                    background-color: white;
+                    color: #0275d8;
+                }
+            }
+        }
+    }
+
     .resultFooter {
         display: flex;
         flex-direction: row;
