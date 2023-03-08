@@ -21,7 +21,7 @@ function TableDashboard() {
             checkbox: false
         }
     });
-    console.log(getValues());
+
     const pageCount = useMemo(
         () => getPageCount(totalResults),
         [totalResults]
