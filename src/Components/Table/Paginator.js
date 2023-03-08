@@ -7,13 +7,13 @@ function Paginator({ pageCount }) {
     const dispatch = useDispatch();
     const userInputs = useSelector((state) => state?.films);
 
-    const onHandle = (page) => {
+    const changePage = (page) => {
         dispatch(getFilms({ page: page, ...userInputs }));
     }
 
     return (
         <div className="paginator">
-            {pageCount?.map(page => <span className="paginatorItem" key={page} onClick={() => onHandle(page)}>{page}</span>)}
+            {pageCount?.map(page => <span className="paginatorItem" key={page} onClick={() => changePage(page)}>{page}</span>)}
         </div>);
 }
 

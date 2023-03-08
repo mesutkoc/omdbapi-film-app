@@ -6,8 +6,6 @@ import { INITIAL_SEARCH_TERM } from './constants';
 import Header from './Components/Header/Header';
 import TableDashboard from './Components/Table/TableDashboard';
 import FilmDetail from './Components/FilmDetail/FilmDetail';
-import './App.css';
-
 
 function App() {
   const dispatch = useDispatch();
@@ -19,7 +17,6 @@ function App() {
   return (
     <div className="App">
       <Header></Header>
-
       <Routes>
         <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path='/dashboard' element={<TableDashboard />}></Route>
