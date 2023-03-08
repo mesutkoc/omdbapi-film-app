@@ -8,6 +8,7 @@ import { INITIAL_SEARCH_TERM } from "../../constants";
 import Paginator from "./Paginator";
 
 import './table.scss';
+import { Link } from "react-router-dom";
 
 function TableDashboard() {
     const dispatch = useDispatch();
@@ -58,7 +59,7 @@ function TableDashboard() {
                     data?.films?.Search?.map((film, index) =>
                         <tr key={film?.imdbID}>
                             <td>{index + 1}</td>
-                            <td>{film?.Title}</td>
+                            <td><Link to={`/filmdetail/i=${film?.imdbID}`}>{film?.Title}</Link></td>
                             <td>{film?.Type}</td>
                             <td>{film?.Year}</td>
                             <td>{film?.imdbID}</td>
