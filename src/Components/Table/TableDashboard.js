@@ -32,7 +32,7 @@ function TableDashboard() {
                     {data?.films?.Search?.map((film, index) =>
                         <tr key={film?.imdbID}>
                             <td>{index + 1}</td>
-                            <td><Link to={`/filmdetail/i=${film?.imdbID}`}>{film?.Title}</Link></td>
+                            <td><Link className="detailpageLink" to={`/filmdetail/i=${film?.imdbID}`}>{film?.Title}</Link></td>
                             <td>{film?.Type}</td>
                             <td>{film?.Year}</td>
                             <td>{film?.imdbID}</td>
